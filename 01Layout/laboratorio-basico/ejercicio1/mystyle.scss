@@ -1,0 +1,72 @@
+@use "base" as *;
+@use "sass:color";
+@use "sass:list";
+
+
+@mixin flex-layout(
+  $direction: row,
+  $justify: flex-start,
+  $align-content: stretch,
+  $align-items: stretch,
+  $gap: 0
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-content: $align-content;
+  align-items: $align-items;
+  gap: $gap;
+}
+
+@mixin font-default($size: 25px, $weight: normal, $family: Calibri) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+body {
+  @include flex-layout(column, auto, auto, auto, 10px);
+  @include font-default();
+
+  [class^="container"] {
+    @include flex-layout(auto, space-between, auto, auto, 10px);
+
+    .box {
+      border-radius: 10px;
+      height: 100px;
+      width: 80%;
+      @include flex-layout(auto, center, center, center, 10px);
+    }
+
+    .base-color {
+      width: 100%;
+      span {
+        color: $white-color;
+      }
+    }
+  }
+}
+
+@for $i from 1 through 3 {
+    $color: list.nth($colors, $i);
+
+    .container-#{$i} {
+        .box {
+            background-color: $color;
+
+            span {
+                color: color.invert($color);
+            }
+        }
+
+        @for $j from 1 through 4 {
+            .lighten-#{$j} {
+                background-color: color.scale($color, $lightness: $j * 15%);
+            }
+
+            .darken-#{$j} {
+                background-color: color.scale($color, $lightness: -$j * 15%);
+            }
+        }
+    }
+}
