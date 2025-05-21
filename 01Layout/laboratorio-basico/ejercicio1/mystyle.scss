@@ -34,12 +34,11 @@ body {
     .box {
       border-radius: 10px;
       height: 100px;
-      width: 80%;
       @include flex-layout(auto, center, center, center, 10px);
     }
 
     .base-color {
-      width: 100%;
+      flex: 1;
       span {
         color: $white-color;
       }
