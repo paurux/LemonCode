@@ -1,3 +1,47 @@
+@use "dark_theme" as *;
+// @use "light_theme" as *;
+
+@mixin font($font-family, $font-size) {
+    font: {
+        family: $font-family;
+        size: $font-size;
+    }
+}
+
 body {
-  background-color: aquamarine;
+    @include font("Comic Sans MS", 17px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+
+    div {
+        padding: 15px;
+        &.box {
+            height: 70px;
+            width: 100px;
+            border: 1px solid black;
+            border-radius: $border-radius;
+            &.base {
+                background-color: $base-color;
+            }
+            &.important {
+                background-color: $important-color;
+            }
+            &.warning {
+                background-color: $warning-color;
+            }
+            &.shadow {
+                box-shadow: $box-shadow;
+            }
+        }
+        &.font-primary {
+            padding-left: 0;
+            @include font($principal-font, 17px);
+        }
+        &.font-secondary {
+            padding-left: 0;
+            @include font($secondary-font, 17px);
+        }
+    }
 }
