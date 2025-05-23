@@ -2,6 +2,11 @@
 @use "sass:color";
 @use "sass:list";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 @mixin flex-layout(
   $direction: row,
@@ -27,13 +32,15 @@
 body {
   @include flex-layout(column, auto, auto, auto, 10px);
   @include font-default();
+  padding: 10px;
 
   [class^="container"] {
     @include flex-layout(auto, space-between, auto, auto, 10px);
 
     .box {
       border-radius: 10px;
-      height: 100px;
+      height: 120px;
+      padding: 10px;
       @include flex-layout(auto, center, center, center, 10px);
     }
 

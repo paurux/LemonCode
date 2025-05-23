@@ -1,3 +1,41 @@
+@use "base" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: aquamarine;
+  padding: 15px;
+  font-family: $font;
+  color: $font-color;
+  h1 {
+    padding: 10px 0;
+  }
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: $base-color;
+    color: $font-color-nav;
+    li {
+      list-style-type: none;
+      padding: 15px 10px;
+      &:hover {
+        background-color: $hover-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  body nav ul {
+    flex-direction: column;
+    li {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
 }
