@@ -1,0 +1,105 @@
+@use "base" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100dvh;
+}
+
+@mixin font($font-family, $font-size, $color) {
+  font: {
+    family: $font-family;
+    size: $font-size;
+  }
+
+  color: $color;
+}
+
+@mixin flex($direction: row, $justify: space-between, $align: center, $gap: null) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+
+  @if $gap != null {
+    gap: $gap;
+  }
+}
+
+body {
+  background-color: $background-color-primary;
+  @include font($font-family, $font-size, $font-color-primary);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 80px 1fr;
+
+  header {
+    @include flex();
+    padding: 20px;
+
+    .header-logo {
+      @include flex();
+      gap: 5px;
+
+      img {
+        height: 60px
+      }
+
+      .platform-title {
+        font-size: $font-size-title;
+      }
+    }
+
+    .header-buttons {
+      @include flex();
+      gap: 30px;
+
+      div {
+        padding: 10px;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: $background-color-secondary;
+          color: $font-color-secondary;
+        }
+      }
+    }
+  }
+
+  main {
+    padding: 20px;
+
+    .section-title>#top-text::after {
+      content: "5";
+      font-weight: bold;
+    }
+
+    section {
+      &.top {
+        @include flex(row-reverse);
+      }
+
+      &.first {
+        @include flex();
+      }
+
+      &.second {
+        @include flex();
+      }
+
+      .item img:hover {
+        height: 120%;
+      } 
+    }
+  }
+
+  footer {}
+}
+
+@media (max-width: 1280px) {
+  body {}
+}
