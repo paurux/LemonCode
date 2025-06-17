@@ -2,7 +2,7 @@
   "name": "laboratorio-avanzado",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open /src/index",
     "build": "vite build",
     "preview": "vite preview"
   },
